@@ -20,7 +20,22 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--white);
+    background: linear-gradient(-45deg, #2c3e50, #3498db, #e74c3c, #9b59b6);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .container {
@@ -31,7 +46,8 @@ body {
 
 /* 导航栏 */
 header {
-    background-color: var(--primary-color);
+    background: rgba(44, 62, 80, 0.95);
+    backdrop-filter: blur(15px);
     color: var(--white);
     padding: 1rem 0;
     position: sticky;
@@ -70,9 +86,7 @@ header h1 {
 
 /* Hero Section with Animated Background */
 .hero {
-    background: linear-gradient(-45deg, #2c3e50, #3498db, #e74c3c, #9b59b6);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
+    background: transparent;
     color: var(--white);
     padding: 0;
     text-align: center;
@@ -82,18 +96,6 @@ header h1 {
     align-items: center;
     justify-content: flex-start;
     min-height: 700px;
-}
-
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
 }
 
 .hero::before {
@@ -170,6 +172,12 @@ header h1 {
     color: #ffffff;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
     font-style: italic;
+}
+
+/* Main Content with Semi-transparent Background */
+main {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
 }
 
 /* 通用区块样式 */
@@ -418,7 +426,8 @@ header h1 {
 
 /* 引用区块 */
 .quote-section {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    background: rgba(44, 62, 80, 0.8);
+    backdrop-filter: blur(10px);
     color: var(--white);
     padding: 60px 20px;
 }
@@ -444,7 +453,8 @@ blockquote cite {
 
 /* 页脚 */
 footer {
-    background-color: var(--primary-color);
+    background: rgba(44, 62, 80, 0.9);
+    backdrop-filter: blur(10px);
     color: var(--white);
     text-align: center;
     padding: 2rem 0;
