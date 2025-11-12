@@ -38,8 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Hero image scroll animation
+    // Hero image and content scroll animation
     const heroImage = document.getElementById('heroImage');
+    const heroContent = document.querySelector('.hero-content');
     let lastScroll = 0;
     const header = document.querySelector('header');
     let ticking = false;
@@ -56,16 +57,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
                 }
 
-                // Hero image animation based on scroll direction
-                if (heroImage) {
+                // Hero image and content animation based on scroll direction
+                if (heroImage && heroContent) {
                     if (currentScroll > lastScroll && currentScroll > 50) {
-                        // Scrolling down - slide image out to the left
+                        // Scrolling down - slide both image and content out to the left
                         heroImage.classList.add('slide-out-left');
                         heroImage.classList.remove('slide-in-right');
+                        heroContent.classList.add('slide-out-left');
+                        heroContent.classList.remove('slide-in-right');
                     } else if (currentScroll < lastScroll || currentScroll <= 50) {
-                        // Scrolling up - slide image in from the right
+                        // Scrolling up - slide both image and content in from the right
                         heroImage.classList.remove('slide-out-left');
                         heroImage.classList.add('slide-in-right');
+                        heroContent.classList.remove('slide-out-left');
+                        heroContent.classList.add('slide-in-right');
                     }
                 }
 
