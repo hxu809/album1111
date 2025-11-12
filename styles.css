@@ -22,6 +22,7 @@ body {
     color: var(--text-color);
     background: linear-gradient(-45deg, #2c3e50, #3498db, #e74c3c, #9b59b6);
     background-size: 400% 400%;
+    background-attachment: fixed;
     animation: gradientShift 15s ease infinite;
     min-height: 100vh;
 }
@@ -176,7 +177,7 @@ header h1 {
 
 /* Main Content with Semi-transparent Background */
 main {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
 }
 
@@ -221,7 +222,8 @@ main {
 }
 
 .info-card {
-    background: var(--light-bg);
+    background: rgba(248, 249, 250, 0.9);
+    backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 10px;
     box-shadow: var(--shadow);
@@ -267,7 +269,8 @@ main {
     position: relative;
     width: 45%;
     padding: 1.5rem;
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
     box-shadow: var(--shadow);
     margin-bottom: 2rem;
@@ -325,7 +328,8 @@ main {
 }
 
 .album-card {
-    background: var(--white);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     border-radius: 15px;
     padding: 2rem;
     box-shadow: var(--shadow);
@@ -390,7 +394,8 @@ main {
 }
 
 .award-card {
-    background: linear-gradient(135deg, var(--light-bg) 0%, var(--white) 100%);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
     padding: 2rem;
     border-radius: 15px;
     box-shadow: var(--shadow);
