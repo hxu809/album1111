@@ -38,20 +38,43 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // 导航栏滚动效果
+    // Hero image scroll animation
+    const heroImage = document.getElementById('heroImage');
     let lastScroll = 0;
     const header = document.querySelector('header');
+    let ticking = false;
 
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const currentScroll = window.pageYOffset;
 
-        if (currentScroll > 100) {
-            header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
-        } else {
-            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                // Header shadow effect
+                if (currentScroll > 100) {
+                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+                } else {
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                }
+
+                // Hero image animation based on scroll direction
+                if (heroImage) {
+                    if (currentScroll > lastScroll && currentScroll > 50) {
+                        // Scrolling down - slide image out to the left
+                        heroImage.classList.add('slide-out-left');
+                        heroImage.classList.remove('slide-in-right');
+                    } else if (currentScroll < lastScroll || currentScroll <= 50) {
+                        // Scrolling up - slide image in from the right
+                        heroImage.classList.remove('slide-out-left');
+                        heroImage.classList.add('slide-in-right');
+                    }
+                }
+
+                lastScroll = currentScroll;
+                ticking = false;
+            });
+
+            ticking = true;
         }
-
-        lastScroll = currentScroll;
     });
 
     // 为歌曲列表添加点击提示
