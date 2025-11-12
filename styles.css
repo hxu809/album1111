@@ -346,30 +346,36 @@ main {
 
 /* 专辑网格 */
 .albums-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
     margin-top: 2rem;
     padding: 0 2rem;
+    flex-wrap: wrap;
 }
 
 .album-link {
     text-decoration: none;
     display: block;
+    width: 350px;
+    height: 350px;
 }
 
 .album-image-card {
     position: relative;
-    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-    aspect-ratio: 1 / 1;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .album-image-card:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
 .album-image {
@@ -377,54 +383,53 @@ main {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s ease;
+    transition: opacity 0.3s ease;
 }
 
 .album-image-card:hover .album-image {
-    transform: scale(1.1);
-}
-
-.album-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(231, 76, 60, 0.85), rgba(52, 152, 219, 0.85));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.album-image-card:hover .album-overlay {
-    opacity: 1;
-}
-
-.album-view-text {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    opacity: 0.9;
 }
 
 /* 响应式 - Albums */
-@media (max-width: 968px) {
+@media (max-width: 1200px) {
     .albums-grid {
-        grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
-        padding: 0 1rem;
+    }
+
+    .album-link {
+        width: 300px;
+        height: 300px;
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 968px) {
     .albums-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        padding: 0 0.5rem;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .album-link {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .albums-grid {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .album-link {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+@media (max-width: 480px) {
+    .album-link {
+        width: 280px;
+        height: 280px;
     }
 }
 
