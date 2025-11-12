@@ -17,7 +17,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif;
+    font-family: 'Momo Trust Display', 'Georgia', 'Palatino', 'Times New Roman', serif, -apple-system, BlinkMacSystemFont;
     line-height: 1.6;
     color: var(--text-color);
     background: linear-gradient(-45deg, #2c3e50, #3498db, #e74c3c, #9b59b6);
@@ -157,7 +157,7 @@ header h1 {
     font-size: 5.5rem;
     margin-bottom: 1.5rem;
     font-weight: 900;
-    font-family: 'Georgia', 'Palatino', 'Times New Roman', serif;
+    font-family: 'Momo Trust Display', 'Georgia', 'Palatino', 'Times New Roman', serif;
     letter-spacing: 4px;
     text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
     color: #ffffff;
@@ -168,7 +168,7 @@ header h1 {
 .hero .subtitle {
     font-size: 2.2rem;
     font-weight: 600;
-    font-family: 'Georgia', 'Palatino', 'Times New Roman', serif;
+    font-family: 'Momo Trust Display', 'Georgia', 'Palatino', 'Times New Roman', serif;
     letter-spacing: 3px;
     color: #ffffff;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
