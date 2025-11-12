@@ -78,6 +78,58 @@
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
         }
 
+        .audio-player {
+            width: 100%;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .track-list {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .track-list h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        }
+
+        .track-list ol {
+            list-style: none;
+            counter-reset: track-counter;
+            padding: 0;
+        }
+
+        .track-list li {
+            counter-increment: track-counter;
+            padding: 0.8rem 0;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .track-list li:before {
+            content: counter(track-counter) ". ";
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+
+        .track-list li:hover {
+            transform: translateX(5px);
+            color: var(--secondary-color);
+        }
+
+        .track-list li:last-child {
+            border-bottom: none;
+        }
+
         @media (max-width: 968px) {
             .album-detail-container {
                 grid-template-columns: 1fr;
@@ -111,9 +163,34 @@
             </div>
             <div class="album-info">
                 <h1>The Great Leap (2005)</h1>
+
+                <!-- Audio Player -->
+                <audio class="audio-player" controls autoplay loop>
+                    <source src="就是爱你.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+
                 <p>Released in 2005, "The Great Leap" represents a bold artistic statement in David Tao's illustrious career. This album showcases his continued evolution as a musician, blending traditional R&B elements with innovative production techniques and profound lyrical content.</p>
                 <p>Featuring tracks that explore themes of love, life, and social commentary, the album demonstrates David Tao's maturity as both a songwriter and producer. Each song reflects his commitment to pushing the boundaries of Mandarin pop music while maintaining the soulful essence that defines his signature sound.</p>
                 <p>The album's sophisticated arrangements and heartfelt performances solidified David Tao's position as one of the most influential artists in contemporary Asian music, earning critical acclaim and commercial success throughout the region.</p>
+
+                <!-- Track Listing -->
+                <div class="track-list">
+                    <h2>Track Listing</h2>
+                    <ol>
+                        <li>就是爱你 (Just Love You)</li>
+                        <li>二十二 (Twenty-Two)</li>
+                        <li>寂寞的季节 (Lonely Season)</li>
+                        <li>普通朋友 (Ordinary Friends)</li>
+                        <li>天天 (Every Day)</li>
+                        <li>爱很简单 (Love is Simple)</li>
+                        <li>找自己 (Finding Myself)</li>
+                        <li>十七岁 (Seventeen)</li>
+                        <li>沙滩 (Beach)</li>
+                        <li>Melody</li>
+                    </ol>
+                </div>
+
                 <a href="index.html#albums" class="back-button">← Back to Albums</a>
             </div>
         </div>
