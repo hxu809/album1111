@@ -347,69 +347,85 @@ main {
 /* 专辑网格 */
 .albums-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
     margin-top: 2rem;
+    padding: 0 2rem;
 }
 
-.album-card {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(15px);
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-top: 4px solid var(--accent-color);
+.album-link {
+    text-decoration: none;
+    display: block;
 }
 
-.album-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-hover);
-}
-
-.album-year {
-    display: inline-block;
-    background: var(--secondary-color);
-    color: var(--white);
-    padding: 0.3rem 1rem;
-    border-radius: 20px;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.album-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-    font-size: 1.4rem;
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
-    font-weight: 700;
-}
-
-.album-desc {
-    color: #666;
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-    font-style: italic;
-}
-
-.song-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.song-list li {
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
+.album-image-card {
     position: relative;
-    color: var(--text-color);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+    aspect-ratio: 1 / 1;
 }
 
-.song-list li::before {
-    content: '♪';
+.album-image-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+.album-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.album-image-card:hover .album-image {
+    transform: scale(1.1);
+}
+
+.album-overlay {
     position: absolute;
+    top: 0;
     left: 0;
-    color: var(--accent-color);
-    font-size: 1.2rem;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.85), rgba(52, 152, 219, 0.85));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.album-image-card:hover .album-overlay {
+    opacity: 1;
+}
+
+.album-view-text {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* 响应式 - Albums */
+@media (max-width: 968px) {
+    .albums-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .albums-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
 }
 
 /* 奖项网格 */
