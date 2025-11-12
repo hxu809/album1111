@@ -9,12 +9,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        body {
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('tzimok.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            filter: blur(20px);
+            transform: scale(1.1);
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
         .album-detail-hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
+            position: relative;
         }
 
         .album-detail-container {
@@ -78,6 +112,51 @@
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
         }
 
+        .track-list {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .track-list h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        }
+
+        .track-list ol {
+            list-style: none;
+            counter-reset: track-counter;
+            padding: 0;
+        }
+
+        .track-list li {
+            counter-increment: track-counter;
+            padding: 0.8rem 0;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .track-list li:before {
+            content: counter(track-counter) ". ";
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+
+        .track-list li:hover {
+            transform: translateX(5px);
+            color: var(--secondary-color);
+        }
+
+        .track-list li:last-child {
+            border-bottom: none;
+        }
+
         @media (max-width: 968px) {
             .album-detail-container {
                 grid-template-columns: 1fr;
@@ -110,9 +189,28 @@
                 <img src="tzimok.jpeg" alt="Album 2" class="album-cover-large">
             </div>
             <div class="album-info">
-                <h1>Album Collection 2</h1>
-                <p>Discover the depth and diversity of David Tao's musical artistry in this remarkable collection. These songs represent the pinnacle of contemporary Mandarin music, combining emotional depth with technical mastery.</p>
-                <p>From soulful ballads to upbeat rhythms, this album showcases the versatility and innovation that has made David Tao a legendary figure in Asian music.</p>
+                <h1>I'm OK (2004)</h1>
+                <p>Released in 2004, "I'm OK" marks a significant chapter in David Tao's musical journey. This album showcases his signature R&B style infused with personal reflections and emotional depth. The title track became an instant classic, resonating with listeners across generations.</p>
+                <p>The album explores themes of self-acceptance, personal growth, and the complexities of modern relationships. David Tao's soulful vocals and sophisticated production elevate each track, creating an intimate listening experience that connects deeply with audiences.</p>
+                <p>With hits like the title track "I'm OK" and other memorable songs, this album solidified David Tao's reputation as one of the most influential R&B artists in Mandarin pop music, earning widespread critical acclaim and commercial success.</p>
+
+                <!-- Track Listing -->
+                <div class="track-list">
+                    <h2>Track Listing</h2>
+                    <ol>
+                        <li>I'm OK</li>
+                        <li>黑色柳丁 (Black Tangerine)</li>
+                        <li>愛我還是他 (Love Me or Him)</li>
+                        <li>今天妳要嫁給我 (Marry Me Today)</li>
+                        <li>Catherine</li>
+                        <li>寂寞的季节 (Lonely Season)</li>
+                        <li>二十二 (Twenty-Two)</li>
+                        <li>王八蛋 (Jerk)</li>
+                        <li>蝴蝶 (Butterfly)</li>
+                        <li>Angel</li>
+                    </ol>
+                </div>
+
                 <a href="index.html#albums" class="back-button">← Back to Albums</a>
             </div>
         </div>
