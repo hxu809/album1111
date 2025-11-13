@@ -9,12 +9,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        body {
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('tz3.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            filter: blur(20px);
+            transform: scale(1.1);
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: -1;
+        }
+
         .album-detail-hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
+            position: relative;
         }
 
         .album-detail-container {
@@ -78,6 +112,51 @@
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
         }
 
+        .track-list {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .track-list h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+        }
+
+        .track-list ol {
+            list-style: none;
+            counter-reset: track-counter;
+            padding: 0;
+        }
+
+        .track-list li {
+            counter-increment: track-counter;
+            padding: 0.8rem 0;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .track-list li:before {
+            content: counter(track-counter) ". ";
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+
+        .track-list li:hover {
+            transform: translateX(5px);
+            color: var(--secondary-color);
+        }
+
+        .track-list li:last-child {
+            border-bottom: none;
+        }
+
         @media (max-width: 968px) {
             .album-detail-container {
                 grid-template-columns: 1fr;
@@ -110,9 +189,28 @@
                 <img src="tz3.jpeg" alt="Album 3" class="album-cover-large">
             </div>
             <div class="album-info">
-                <h1>Album Collection 3</h1>
-                <p>A testament to David Tao's enduring influence and creative evolution, this collection features some of his most memorable and impactful work. Each song is a masterpiece that has touched millions of hearts.</p>
-                <p>Immerse yourself in the sophisticated blend of Eastern and Western musical elements that defines David Tao's signature sound and artistic vision.</p>
+                <h1>David Tao (1997)</h1>
+                <p>Released in 1997, David Tao's self-titled debut album marked a revolutionary moment in Mandarin pop music. This groundbreaking album introduced authentic R&B and Soul to the Chinese-speaking music world, earning him the title "The Godfather of Mandarin R&B".</p>
+                <p>Featuring iconic tracks like "Flowing Sand" (流沙) and "Heart In Chaos" (心乱飞), the album showcased David's exceptional talent as a singer, songwriter, and producer. His unique fusion of Western R&B grooves with Eastern melodies created a fresh sound that resonated deeply with audiences across Asia.</p>
+                <p>This debut masterpiece not only launched David Tao's legendary career but also influenced an entire generation of Chinese pop musicians, redefining what Mandarin pop music could be.</p>
+
+                <!-- Track Listing -->
+                <div class="track-list">
+                    <h2>Track Listing</h2>
+                    <ol>
+                        <li>流沙 (Flowing Sand)</li>
+                        <li>心乱飞 (Heart In Chaos)</li>
+                        <li>爱，很简单 (Love is Simple)</li>
+                        <li>Airport 1999</li>
+                        <li>Melody</li>
+                        <li>小镇姑娘 (Small Town Girl)</li>
+                        <li>十七岁 (Seventeen)</li>
+                        <li>Angeline</li>
+                        <li>找自己 (Finding Myself)</li>
+                        <li>是是非非 (Right and Wrong)</li>
+                    </ol>
+                </div>
+
                 <a href="index.html#albums" class="back-button">← Back to Albums</a>
             </div>
         </div>
