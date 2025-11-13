@@ -112,6 +112,29 @@
             box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
         }
 
+        .audio-player {
+            width: 100%;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        .play-prompt {
+            background: rgba(52, 152, 219, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
         .track-list {
             margin-top: 2rem;
             padding-top: 2rem;
@@ -190,6 +213,16 @@
             </div>
             <div class="album-info">
                 <h1>I'm OK (2004)</h1>
+
+                <!-- Audio Player -->
+                <audio id="albumAudio" class="audio-player" controls loop>
+                    <source src="ylx.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <div id="playPrompt" class="play-prompt" style="display: none;">
+                    <p>Click anywhere to start playing music</p>
+                </div>
+
                 <p>Released in 2004, "I'm OK" marks a significant chapter in David Tao's musical journey. This album showcases his signature R&B style infused with personal reflections and emotional depth. The title track became an instant classic, resonating with listeners across generations.</p>
                 <p>The album explores themes of self-acceptance, personal growth, and the complexities of modern relationships. David Tao's soulful vocals and sophisticated production elevate each track, creating an intimate listening experience that connects deeply with audiences.</p>
                 <p>With hits like the title track "I'm OK" and other memorable songs, this album solidified David Tao's reputation as one of the most influential R&B artists in Mandarin pop music, earning widespread critical acclaim and commercial success.</p>
@@ -215,5 +248,36 @@
             </div>
         </div>
     </section>
+
+    <script>
+        // Auto-play audio with fallback for browser restrictions
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('albumAudio');
+            const playPrompt = document.getElementById('playPrompt');
+
+            // Try to autoplay
+            const playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Autoplay started successfully
+                    console.log('Audio autoplay started');
+                }).catch(error => {
+                    // Autoplay was prevented
+                    console.log('Autoplay prevented, showing prompt');
+                    playPrompt.style.display = 'block';
+
+                    // Start playing on any user interaction
+                    const startPlayback = () => {
+                        audio.play();
+                        playPrompt.style.display = 'none';
+                        document.removeEventListener('click', startPlayback);
+                    };
+
+                    document.addEventListener('click', startPlayback);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
